@@ -1,0 +1,6 @@
+package component:hello-world;
+
+/// An example world for the component to target.
+world hello-world {
+    export greet: func(greetee: string) -> string;
+}

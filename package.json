@@ -1,0 +1,20 @@
+{
+  "name": "elixirconf-2025",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "marp index.md -o index.html",
+    "watch": "marp --watch index.md -o index.html",
+    "serve": "live-server --port=8080 --open=index.html",
+    "start": "concurrently \"npm run watch\" \"npm run serve\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@marp-team/marp-cli": "^4.2.0",
+    "concurrently": "^8.2.2",
+    "live-server": "^1.2.2"
+  }
+}
