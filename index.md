@@ -23,20 +23,44 @@ style: |
     width: 120px;
     right: 20px;
     top: 0;
-
   }
+
   section #title-slide-logo {
     margin-left: -60px;
+  }
+
+  /* Small logo for all slides except title */
+  section:not(:first-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 60px;
+    background: url('images/full-color.png') no-repeat center;
+    background-size: contain;
+    z-index: 1000;
   }
 ---
 
 ## Extending the reach of Elixir with WebAssembly Components
 Chris Nelson
 @superchris
+BlueSky: @superchris.launchscout.com
 chris@launchscout.com
-![h:200](full-color.png#title-slide-logo)
+![h:200](images/full-color.png#title-slide-logo)
 
 ---
+
+# About me
+- Long time Elixir developer and fan
+- Co-founder of Launch Scout
+- Creator of LiveState
+- Contributor to Wasmex
+
+---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Agenda
 - Intro to WASM components
@@ -48,6 +72,8 @@ chris@launchscout.com
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # What is WebAssembly?
 - A binary instruction format for a stack-based virtual machine
 - Portable compilation target for programming languages
@@ -55,6 +81,8 @@ chris@launchscout.com
 - WASI standardizes server side WebAssembly since 2019
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # WebAssembly Core (2.0)
 - Supports only:
@@ -68,6 +96,8 @@ chris@launchscout.com
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Saying hello from WebAssembly
 - Let's allocate some shared memory
 - passing pointers and offsets and lengths, oh my!
@@ -75,6 +105,8 @@ chris@launchscout.com
 - Are you sad yet?
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # WebAssembly Components
 - Higher-level abstraction layer on top of core WebAssembly
@@ -86,22 +118,29 @@ chris@launchscout.com
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # WIT (WebAssembly Interface Types)
 - Interface Definition Language
 - Describes components' interfaces
-- Defines data types and functions
+- Function imports and exports
+- User defined data types
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # WIT structure
 - package - top level container of the form `namespace:name@version` 
 - worlds - specifies the "contract" for a component and contains
   - exports - functions (or interfaces) provided by a component
-  - imports - functions (or interfaces) provided by a component
+  - imports - functions (or interfaces) required by a component
 - interfaces - named group of types and functions
 - types
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # WIT types
 - Primitive types
@@ -116,6 +155,8 @@ chris@launchscout.com
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Hello World WIT
 ```wit
 package component:hello-world;
@@ -126,6 +167,8 @@ world hello-world {
 ```
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Language support (incomplete list)
 - Rust
@@ -140,18 +183,31 @@ world hello-world {
 
 ---
 
-# Implementation and build tools are language specific
+# WASM component security model
+- Components can only can only call imported functions
+  - 0 privilege by default
+- WASI standardized host provided imports for:
+  - clocks
+  - random
+  - filesystem
+  - http
+  - I/O
+- enabling these is runtime specific
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Introducing Wasmex
 - Elixir wrapper for wasmtime
-- Rust and Rustler
 - Started by Philipp Tessenow (thanks Philipp!!)
 - First release in 2020
 - Originally supported core WebAssembly
+- Supports components since 0.10
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Wasmex component support
 ## Mapping types
@@ -170,7 +226,7 @@ world hello-world {
   </tr>
   <tr>
     <td>Variant</td>
-    <td>{:atom, value}</td>
+    <td>:atom or {:atom, value}</td>
   </tr>
   <tr>
     <td>Result</td>
@@ -192,6 +248,8 @@ world hello-world {
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Under the covers
 - Uses rustler to talk to wasmtime
 - function calls in both directions are async
@@ -200,6 +258,8 @@ world hello-world {
   - PR out for Tokio
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # How to Wasmex
 ## Step 1: Supervise your component
@@ -221,6 +281,8 @@ end
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Calling functions
 ### "low level" api via `Wasmex.Components`
 ```elixir
@@ -230,7 +292,9 @@ iex>Wasmex.Components.call_function(pid, "function-name", [args])
 
 ---
 
-## More idiomatic Elixir 
+<!-- _footer: '![](images/full-color.png)' -->
+
+## More idiomatic Elixir
 - use `Wasmex.Components.ComponentServer`
 - Generates wrapper functions for all exported functions
 ```elixir
@@ -239,15 +303,19 @@ defmodule MyComponent do
     wit: "priv/wasm/hello-world.wit",
 end
 
-iex>MyComponent.function_name(arg)
+iex>MyComponent.function_name(pid, arg1, arg2, ...)
 {:ok, result}
 ```
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Let's greet!
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Getting practical
 ## What can we do with all this?
@@ -257,6 +325,8 @@ iex>MyComponent.function_name(arg)
   - I'm gonna focus here
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Extensible systems
 ### How do we do it today?
@@ -268,6 +338,8 @@ iex>MyComponent.function_name(arg)
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Problems
 - Latency
 - Complexity
@@ -277,6 +349,8 @@ iex>MyComponent.function_name(arg)
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Solution: WebAssembly Components
 - customer provided code
 - language agnostic
@@ -284,10 +358,14 @@ iex>MyComponent.function_name(arg)
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Example: [WasmCommerce](http://localhost:4000)
-### A 100% vibe coded ecommerce platform (Elixir)
+### A ~~100%~~ mostly vibe coded ecommerce platform
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Let's add custom shipping calculation
 - We want to see the result immediately on the order screen
@@ -295,6 +373,8 @@ iex>MyComponent.function_name(arg)
 - webhooks/API calls are not ideal
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # A shipping calculator WebAssembly component
 ```wit
@@ -325,6 +405,8 @@ world shipping-calculator-component {
 ```
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Continued...
 
@@ -368,17 +450,6 @@ world shipping-calculator-component {
 
 # Let's add surcharges!
 
----
-
-# Talking to the outside world
-- By default, components can do pretty much nothing
-- We might like to let them do stuff!
-- WASI interfaces for
-  - clocks
-  - random
-  - filesystem
-  - http
-  - I/O
 ---
 
 # Let's make a sunny day discount!

@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "marp index.md -o index.html",
     "watch": "marp --watch index.md -o index.html",
-    "serve": "live-server --port=8080 --open=index.html",
-    "start": "concurrently \"npm run watch\" \"npm run serve\""
+    "start": "live-server --port=8080 --open=index.html"
   },
   "author": "",
   "license": "ISC",
