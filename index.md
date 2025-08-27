@@ -182,6 +182,9 @@ world hello-world {
 - Ruby (host only)
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
+
 # HelloWorld in Rust
 ```rust
 #[allow(warnings)]
@@ -204,6 +207,8 @@ bindings::export!(Component with_types_in bindings);
 cargo component build
 ```
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # WASM component security model
 - Components can only can only call imported functions
@@ -447,6 +452,8 @@ world shipping-calculator-component {
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Using our Shipping Calculator component...
 ### Our elixir wrapper module
 ```elixir
@@ -465,6 +472,9 @@ end
   end
 ```
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Supervising our component
 ```elixir
 defmodule WasmCommerce.Application do
@@ -481,9 +491,13 @@ defmodule WasmCommerce.Application do
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Let's write some javascript at Elixirconf!!!
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Calling Elixir from components
 ### We can import as well as export...
@@ -520,9 +534,13 @@ end
 ```
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Let's add surcharges!
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # Calling the outside word
 - WASI provides standard imports for http
@@ -540,19 +558,27 @@ children = [
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Let's make a sunny day discount!
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Future stuff!
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # WASI P3
 - Async functions in components
 - will likely require some wasmex changes
 
 ---
+
+<!-- _footer: '![](images/full-color.png)' -->
 
 # What about creating components in Elixir?
 - Popcorn lets us write (core) wasm in Elixir
@@ -562,6 +588,13 @@ children = [
 
 ---
 
+<!-- _footer: '![](images/full-color.png)' -->
+
 # Thanks!
+
+## Repository
+![QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://github.com/launchscout/elixirconf-2025)
+
+https://github.com/launchscout/elixirconf-2025
 
 ---
