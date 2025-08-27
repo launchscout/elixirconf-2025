@@ -1121,7 +1121,7 @@ section:not(:first-child)::after {
   z-index: 1000;
 }
 ;">
-<h1 id="language-support-incomplete-list">Language support (incomplete list)</h1>
+<h1 id="language-support">Language support</h1>
 <ul>
 <li>Rust</li>
 <li>Javascript</li>
@@ -1136,6 +1136,107 @@ section:not(:first-child)::after {
 <footer><img src="images/full-color.png" alt="" /></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-style="
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+" lang="en-US" style="--style:
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+;">
+<h1 id="helloworld-in-rust">HelloWorld in Rust</h1>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-rust"><span class="hljs-meta">#[allow(warnings)]</span>
+<span class="hljs-keyword">mod</span> bindings;
+
+<span class="hljs-keyword">use</span> bindings::Guest;
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Component</span>;
+
+<span class="hljs-keyword">impl</span> <span class="hljs-title class_">Guest</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Component</span> {
+    <span class="hljs-comment">/// Say hello!</span>
+    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">greet</span>(greetee: <span class="hljs-type">String</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">String</span> {
+        <span class="hljs-built_in">format!</span>(<span class="hljs-string">&quot;Hello from a WebAssembly Component, {}!&quot;</span>, greetee)
+    }
+}
+
+bindings::export!(Component with_types_in bindings);
+</code></pre>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">cargo component build
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1235,7 +1336,7 @@ section:not(:first-child)::after {
 <li>enabling these is runtime specific</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-footer="![](images/full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-footer="![](images/full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1326,7 +1427,7 @@ section:not(:first-child)::after {
 </ul>
 <footer><img src="images/full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-footer="![](images/full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-footer="![](images/full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1440,12 +1541,12 @@ section:not(:first-child)::after {
   </tr>
   <tr>
     <td>Option</td>
-    <td>value or nil</td>
+    <td>:none or {:some, value}</td>
   </tr>
 </table>
 <footer><img src="images/full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-footer="![](images/full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-footer="![](images/full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1539,7 +1640,7 @@ section:not(:first-child)::after {
 </ul>
 <footer><img src="images/full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-footer="![](images/full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-footer="![](images/full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1638,7 +1739,7 @@ section:not(:first-child)::after {
 </code></pre>
 <footer><img src="images/full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-footer="![](images/full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-footer="![](images/full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1726,7 +1827,7 @@ section:not(:first-child)::after {
 </code></pre>
 <footer><img src="images/full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-footer="![](images/full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-footer="![](images/full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1812,98 +1913,14 @@ section:not(:first-child)::after {
 <li>use <code>Wasmex.Components.ComponentServer</code></li>
 <li>Generates wrapper functions for all exported functions</li>
 </ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-elixir"><span class="hljs-class"><span class="hljs-keyword">defmodule</span> <span class="hljs-title">MyComponent</span></span> <span class="hljs-keyword">do</span>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-elixir"><span class="hljs-class"><span class="hljs-keyword">defmodule</span> <span class="hljs-title">HelloWorld</span></span> <span class="hljs-keyword">do</span>
   <span class="hljs-keyword">use</span> <span class="hljs-title class_">Wasmex</span>.<span class="hljs-title class_">Components</span>.<span class="hljs-title class_">ComponentServer</span>,
     <span class="hljs-symbol">wit:</span> <span class="hljs-string">&quot;priv/wasm/hello-world.wit&quot;</span>,
 <span class="hljs-keyword">end</span>
 
-iex&gt;<span class="hljs-title class_">MyComponent</span>.function_name(pid, arg1, arg2, ...)
+iex&gt;<span class="hljs-title class_">HelloWorld</span>.function_name(pid, arg1, arg2, ...)
 {<span class="hljs-symbol">:ok</span>, result}
 </code></pre>
-<footer><img src="images/full-color.png" alt="" /></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-footer="![](images/full-color.png)" data-style="
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-}
-
-section #title-slide-logo {
-  margin-left: -60px;
-}
-
-/* Small logo for all slides except title */
-section:not(:first-child)::after {
-  content: '';
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 80px;
-  height: 60px;
-  background: url('images/full-color.png') no-repeat center;
-  background-size: contain;
-  z-index: 1000;
-}
-" lang="en-US" style="--footer:![](images/full-color.png);--style:
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-}
-
-section #title-slide-logo {
-  margin-left: -60px;
-}
-
-/* Small logo for all slides except title */
-section:not(:first-child)::after {
-  content: '';
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 80px;
-  height: 60px;
-  background: url('images/full-color.png') no-repeat center;
-  background-size: contain;
-  z-index: 1000;
-}
-;">
-<h1 id="lets-greet">Let's greet!</h1>
 <footer><img src="images/full-color.png" alt="" /></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-footer="![](images/full-color.png)" data-style="
@@ -1990,8 +2007,8 @@ section:not(:first-child)::after {
 <h1 id="getting-practical">Getting practical</h1>
 <h2 id="what-can-we-do-with-all-this">What can we do with all this?</h2>
 <ul>
-<li>Leverage libraries from other languages</li>
-<li>Allowing other languages to benefit from OTP</li>
+<li><a href="https://www.youtube.com/watch?v=pT3qkgzux1w">Leverage libraries from other languages</a></li>
+<li><a href="https://www.youtube.com/watch?v=F-VyDJKWG_k">Allowing other languages to benefit from OTP</a></li>
 <li>User extensible systems
 <ul>
 <li>I'm gonna focus here</li>
@@ -2538,10 +2555,10 @@ world shipping-calculator-component {
   export calculate-shipping: func(order: order) -&gt; u32;
 
   record order {
-    id: option&lt;u32&gt;,
+    id: u32,
     customer: customer,
     status: string,
-    total-cents: option&lt;u32&gt;,  // in cents
+    total-cents: u32,  // in cents
     line-items: list&lt;line-item&gt;
   }
 
@@ -2549,11 +2566,11 @@ world shipping-calculator-component {
     id: u32,
     name: string,
     email: string,
-    phone: option&lt;string&gt;,
-    address: option&lt;string&gt;,
-    city: option&lt;string&gt;,
-    state: option&lt;string&gt;,
-    zip: option&lt;string&gt;
+    phone: string,
+    address: string,
+    city: string,
+    state: string,
+    zip: string
   }
 </code></pre>
 <footer><img src="images/full-color.png" alt="" /></footer>
@@ -2641,6 +2658,7 @@ section:not(:first-child)::after {
 ;">
 <h1 id="continued">Continued...</h1>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-wit">  record line-item {
+    product-id: u32,
     product: product,
     quantity: u32,
     unit-price-cents: u32,  // in cents
@@ -2739,9 +2757,200 @@ section:not(:first-child)::after {
   z-index: 1000;
 }
 ;">
-<h1 id="lets-make-a-shipping-calculator">Let's make a shipping calculator</h1>
+<h1 id="using-our-shipping-calculator-component">Using our Shipping Calculator component...</h1>
+<h3 id="our-elixir-wrapper-module">Our elixir wrapper module</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-elixir"><span class="hljs-class"><span class="hljs-keyword">defmodule</span> <span class="hljs-title">WasmCommerce.Orders.ShippingCalculator</span></span> <span class="hljs-keyword">do</span>
+  <span class="hljs-keyword">use</span> <span class="hljs-title class_">Wasmex</span>.<span class="hljs-title class_">Components</span>.<span class="hljs-title class_">ComponentServer</span>,
+    <span class="hljs-symbol">wit:</span> <span class="hljs-string">&quot;wasm/shipping-calculator.wit&quot;</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_shipping</span></span>(order), <span class="hljs-symbol">do:</span> calculate_shipping(__MODULE__, order)
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3 id="ordersex">orders.ex</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-elixir">  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">shipping_amount</span></span>(order) <span class="hljs-keyword">do</span>
+    {<span class="hljs-symbol">:ok</span>, shipping_cents} = <span class="hljs-title class_">ShippingCalculator</span>.calculate_shipping(order |&gt; convert_fields())
+    <span class="hljs-title class_">Decimal</span>.from_float(shipping_cents / <span class="hljs-number">100</span>)
+  <span class="hljs-keyword">end</span>
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-style="
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+" lang="en-US" style="--style:
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+;">
+<h1 id="supervising-our-component">Supervising our component</h1>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-elixir"><span class="hljs-class"><span class="hljs-keyword">defmodule</span> <span class="hljs-title">WasmCommerce.Application</span></span> <span class="hljs-keyword">do</span>
+  <span class="hljs-keyword">use</span> <span class="hljs-title class_">Application</span>
+
+  <span class="hljs-variable">@impl</span> <span class="hljs-literal">true</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start</span></span>(_type, _args) <span class="hljs-keyword">do</span>
+    children = [
+      {<span class="hljs-title class_">WasmCommerce</span>.<span class="hljs-title class_">Orders</span>.<span class="hljs-title class_">ShippingCalculator</span>,
+       <span class="hljs-symbol">path:</span> <span class="hljs-string">&quot;priv/wasm/shipping-calculator.wasm&quot;</span>, <span class="hljs-symbol">wasi:</span> %<span class="hljs-title class_">Wasmex</span>.<span class="hljs-title class_">Wasi</span>.<span class="hljs-title class_">WasiP2Options</span>{},
+       <span class="hljs-symbol">name:</span> <span class="hljs-title class_">WasmCommerce</span>.<span class="hljs-title class_">Orders</span>.<span class="hljs-title class_">ShippingCalculator</span>},
+    ...
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-style="
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+" lang="en-US" style="--style:
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+;">
+<h1 id="lets-write-some-javascript-at-elixirconf">Let's write some javascript at Elixirconf!!!</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2833,7 +3042,108 @@ world shipping-calculator-component {
   export calculate-shipping: func(order: order) -&gt; u32;
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-style="
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+" lang="en-US" style="--style:
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+;">
+<h1 id="providing-the-imports-from-elixir">Providing the imports from Elixir</h1>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-elixir"><span class="hljs-class"><span class="hljs-keyword">defmodule</span> <span class="hljs-title">WasmCommerce.Orders.ShippingCalculator</span></span> <span class="hljs-keyword">do</span>
+  <span class="hljs-keyword">use</span> <span class="hljs-title class_">Wasmex</span>.<span class="hljs-title class_">Components</span>.<span class="hljs-title class_">ComponentServer</span>,
+    <span class="hljs-symbol">wit:</span> <span class="hljs-string">&quot;wasm/shipping-calculator.wit&quot;</span>,
+    <span class="hljs-symbol">imports:</span> %{
+      <span class="hljs-string">&quot;product-surcharge&quot;</span> =&gt; {<span class="hljs-symbol">:fn</span>, &amp;get_product_surcharge/<span class="hljs-number">1</span>}
+    }
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_shipping</span></span>(order), <span class="hljs-symbol">do:</span> calculate_shipping(__MODULE__, order)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_product_surcharge</span></span>(%{<span class="hljs-symbol">name:</span> product_name}) <span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-title class_">String</span>.contains?(product_name, <span class="hljs-string">&quot;Premium&quot;</span>) <span class="hljs-keyword">do</span>
+      <span class="hljs-number">500</span>
+    <span class="hljs-keyword">else</span>
+      <span class="hljs-number">0</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2916,7 +3226,103 @@ section:not(:first-child)::after {
 ;">
 <h1 id="lets-add-surcharges">Let's add surcharges!</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-style="
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+" lang="en-US" style="--style:
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+}
+
+section #title-slide-logo {
+  margin-left: -60px;
+}
+
+/* Small logo for all slides except title */
+section:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  background: url('images/full-color.png') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+}
+;">
+<h1 id="calling-the-outside-word">Calling the outside word</h1>
+<ul>
+<li>WASI provides standard imports for http</li>
+<li>JCO maps fetch to WASI http</li>
+<li>This means can can make requests in our js component</li>
+<li>We just need to allow it!</li>
+</ul>
+<h3 id="applicationex">application.ex</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-elixir">children = [
+  {<span class="hljs-title class_">WasmCommerce</span>.<span class="hljs-title class_">Orders</span>.<span class="hljs-title class_">ShippingCalculator</span>,
+    <span class="hljs-symbol">path:</span> <span class="hljs-string">&quot;priv/wasm/shipping-calculator.wasm&quot;</span>, <span class="hljs-symbol">wasi:</span> %<span class="hljs-title class_">Wasmex</span>.<span class="hljs-title class_">Wasi</span>.<span class="hljs-title class_">WasiP2Options</span>{<span class="hljs-symbol">allow_http:</span> <span class="hljs-literal">true</span>},
+    <span class="hljs-symbol">name:</span> <span class="hljs-title class_">WasmCommerce</span>.<span class="hljs-title class_">Orders</span>.<span class="hljs-title class_">ShippingCalculator</span>},
+...
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2998,13 +3404,8 @@ section:not(:first-child)::after {
 }
 ;">
 <h1 id="lets-make-a-sunny-day-discount">Let's make a sunny day discount!</h1>
-<ul>
-<li>JCO maps fetch to WASI http</li>
-<li>This means can can make requests in our js component</li>
-<li>We just need to allow it!</li>
-</ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -3087,7 +3488,7 @@ section:not(:first-child)::after {
 ;">
 <h1 id="future-stuff">Future stuff!</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -3174,7 +3575,7 @@ section:not(:first-child)::after {
 <li>will likely require some wasmex changes</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -3263,7 +3664,7 @@ section:not(:first-child)::after {
 <li>If you are interested, let's talk!</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -3346,7 +3747,7 @@ section:not(:first-child)::after {
 ;">
 <h1 id="thanks">Thanks!</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-style="
 section h1 {
   color: #6042BC;
 }

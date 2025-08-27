@@ -170,7 +170,7 @@ world hello-world {
 
 <!-- _footer: '![](images/full-color.png)' -->
 
-# Language support (incomplete list)
+# Language support
 - Rust
 - Javascript
 - C/C++
@@ -181,6 +181,28 @@ world hello-world {
 - Elixir (host only)
 - Ruby (host only)
 
+---
+# HelloWorld in Rust
+```rust
+#[allow(warnings)]
+mod bindings;
+
+use bindings::Guest;
+
+struct Component;
+
+impl Guest for Component {
+    /// Say hello!
+    fn greet(greetee: String) -> String {
+        format!("Hello from a WebAssembly Component, {}!", greetee)
+    }
+}
+
+bindings::export!(Component with_types_in bindings);
+```
+```bash
+cargo component build
+```
 ---
 
 # WASM component security model
@@ -242,7 +264,7 @@ world hello-world {
   </tr>
   <tr>
     <td>Option</td>
-    <td>value or nil</td>
+    <td>:none or {:some, value}</td>
   </tr>
 </table>
 
@@ -298,12 +320,12 @@ iex>Wasmex.Components.call_function(pid, "function-name", [args])
 - use `Wasmex.Components.ComponentServer`
 - Generates wrapper functions for all exported functions
 ```elixir
-defmodule MyComponent do
+defmodule HelloWorld do
   use Wasmex.Components.ComponentServer,
     wit: "priv/wasm/hello-world.wit",
 end
 
-iex>MyComponent.function_name(pid, arg1, arg2, ...)
+iex>HelloWorld.function_name(pid, arg1, arg2, ...)
 {:ok, result}
 ```
 
@@ -311,16 +333,10 @@ iex>MyComponent.function_name(pid, arg1, arg2, ...)
 
 <!-- _footer: '![](images/full-color.png)' -->
 
-# Let's greet!
-
----
-
-<!-- _footer: '![](images/full-color.png)' -->
-
 # Getting practical
 ## What can we do with all this?
-- Leverage libraries from other languages
-- Allowing other languages to benefit from OTP
+- [Leverage libraries from other languages](https://www.youtube.com/watch?v=pT3qkgzux1w)
+- [Allowing other languages to benefit from OTP](https://www.youtube.com/watch?v=F-VyDJKWG_k)
 - User extensible systems
   - I'm gonna focus here
 
@@ -385,10 +401,10 @@ world shipping-calculator-component {
   export calculate-shipping: func(order: order) -> u32;
 
   record order {
-    id: option<u32>,
+    id: u32,
     customer: customer,
     status: string,
-    total-cents: option<u32>,  // in cents
+    total-cents: u32,  // in cents
     line-items: list<line-item>
   }
 
@@ -396,11 +412,11 @@ world shipping-calculator-component {
     id: u32,
     name: string,
     email: string,
-    phone: option<string>,
-    address: option<string>,
-    city: option<string>,
-    state: option<string>,
-    zip: option<string>
+    phone: string,
+    address: string,
+    city: string,
+    state: string,
+    zip: string
   }
 ```
 
@@ -412,6 +428,7 @@ world shipping-calculator-component {
 
 ```wit
   record line-item {
+    product-id: u32,
     product: product,
     quantity: u32,
     unit-price-cents: u32,  // in cents
@@ -430,7 +447,41 @@ world shipping-calculator-component {
 
 ---
 
-# Let's make a shipping calculator
+# Using our Shipping Calculator component...
+### Our elixir wrapper module
+```elixir
+defmodule WasmCommerce.Orders.ShippingCalculator do
+  use Wasmex.Components.ComponentServer,
+    wit: "wasm/shipping-calculator.wit"
+
+  def calculate_shipping(order), do: calculate_shipping(__MODULE__, order)
+end
+```
+### orders.ex
+```elixir
+  def shipping_amount(order) do
+    {:ok, shipping_cents} = ShippingCalculator.calculate_shipping(order |> convert_fields())
+    Decimal.from_float(shipping_cents / 100)
+  end
+```
+---
+# Supervising our component
+```elixir
+defmodule WasmCommerce.Application do
+  use Application
+
+  @impl true
+  def start(_type, _args) do
+    children = [
+      {WasmCommerce.Orders.ShippingCalculator,
+       path: "priv/wasm/shipping-calculator.wasm", wasi: %Wasmex.Wasi.WasiP2Options{},
+       name: WasmCommerce.Orders.ShippingCalculator},
+    ...
+```
+
+---
+
+# Let's write some javascript at Elixirconf!!!
 
 ---
 
@@ -447,15 +498,49 @@ world shipping-calculator-component {
 ```
 
 ---
+# Providing the imports from Elixir
+```elixir
+defmodule WasmCommerce.Orders.ShippingCalculator do
+  use Wasmex.Components.ComponentServer,
+    wit: "wasm/shipping-calculator.wit",
+    imports: %{
+      "product-surcharge" => {:fn, &get_product_surcharge/1}
+    }
+
+  def calculate_shipping(order), do: calculate_shipping(__MODULE__, order)
+
+  def get_product_surcharge(%{name: product_name}) do
+    if String.contains?(product_name, "Premium") do
+      500
+    else
+      0
+    end
+  end
+end
+```
+---
 
 # Let's add surcharges!
 
 ---
 
-# Let's make a sunny day discount!
+# Calling the outside word
+- WASI provides standard imports for http
 - JCO maps fetch to WASI http
 - This means can can make requests in our js component
 - We just need to allow it!
+### application.ex
+```elixir
+children = [
+  {WasmCommerce.Orders.ShippingCalculator,
+    path: "priv/wasm/shipping-calculator.wasm", wasi: %Wasmex.Wasi.WasiP2Options{allow_http: true},
+    name: WasmCommerce.Orders.ShippingCalculator},
+...
+```
+
+---
+
+# Let's make a sunny day discount!
 
 ---
 
